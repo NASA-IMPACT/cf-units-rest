@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # @Author: ritesh
 # @Date:   2016-03-17 14:37:20
-# @Last Modified by:   ritesh
-# @Last Modified time: 2016-03-17 15:49:07
+# @Last Modified by:   Ritesh Pradhan
+# @Last Modified time: 2016-03-17 17:13:54
 
 from flask import Flask, render_template, request, jsonify, redirect, url_for, Response
 import os
@@ -87,4 +87,4 @@ def index():
     return resp
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5002, debug = True)
+    app.run(host='0.0.0.0', port=5003, debug = True)
