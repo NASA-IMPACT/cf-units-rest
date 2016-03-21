@@ -3,7 +3,7 @@
 # @Author: Ritesh Pradhan
 # @Date:   2016-03-21 11:28:25
 # @Last Modified by:   Ritesh Pradhan
-# @Last Modified time: 2016-03-21 12:45:39
+# @Last Modified time: 2016-03-21 12:46:45
 
 
 from flask import Flask, render_template, request, jsonify, redirect, url_for, Response
@@ -13,7 +13,7 @@ from bson import json_util
 import time
 import operator
 
-from lib import libmongo
+from libs import libmongo
 from bson.objectid import ObjectId
 
 
