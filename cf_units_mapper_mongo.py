@@ -3,7 +3,7 @@
 # @Author: Ritesh Pradhan
 # @Date:   2016-03-21 11:28:25
 # @Last Modified by:   Ritesh Pradhan
-# @Last Modified time: 2016-03-21 12:43:49
+# @Last Modified time: 2016-03-21 12:45:39
 
 
 from flask import Flask, render_template, request, jsonify, redirect, url_for, Response
@@ -22,7 +22,7 @@ app = Flask(__name__)
 
 ####################################
 """Read sweet_cf from db """
-db = libmongo.get_db()	#db contains sweet_cf collection
+db = libmongo.get_db()  #db contains sweet_cf collection
 db_table_name = "sweet_cf"
 ###########################
 """REST API"""
@@ -70,21 +70,21 @@ def rest_service_key():
     ex) GET /service?cf=123456
     """
     try:
-		if request.method == 'GET':
-			if not request.query_string:
-				return not_found()
-			if "cf" not in set(request.args) and "units" not in set(request.args):
-				return not_found()
+        if request.method == 'GET':
+            if not request.query_string:
+                return not_found()
+            if "cf" not in set(request.args) and "units" not in set(request.args):
+                return not_found()
 
-			arg_key = "cf" if "cf" in request.args else "units"
-			arg_value = request.args.get(arg_key)
-			results = db[db_table_name].find({arg_key: arg_value})
-			json_results = []
+            arg_key = "cf" if "cf" in request.args else "units"
+            arg_value = request.args.get(arg_key)
+            results = db[db_table_name].find({arg_key: arg_value})
+            json_results = []
             for result in results:
                 json_results.append(get_result(result))
             js = to_json(json_results)
-			resp = Response(js, status=200, mimetype='application/json')
-			return resp
+            resp = Response(js, status=200, mimetype='application/json')
+            return resp
     except Exception, e:
         print (e)
         return not_found()
@@ -96,17 +96,17 @@ def rest_service_key():
 #     ex) GET /service?cf=123456&units=kg m-2 s-1
 #     """
 #     try:
-# 		if request.method == 'GET':
-# 			if not request.query_string:
-# 				return not_found()
-# 			params_dict = request.args.to_dict(flat=True)
-# 			results = db[db_table_name].find(params_dict)
-# 			json_results = []
+#       if request.method == 'GET':
+#           if not request.query_string:
+#               return not_found()
+#           params_dict = request.args.to_dict(flat=True)
+#           results = db[db_table_name].find(params_dict)
+#           json_results = []
 #             for result in results:
 #                 json_results.append(get_result(result))
 #             js = to_json(json_results)
-# 			resp = Response(js, status=200, mimetype='application/json')
-# 			return resp
+#           resp = Response(js, status=200, mimetype='application/json')
+#           return resp
 #     except Exception, e:
 #         print (e)
 #         return not_found()
