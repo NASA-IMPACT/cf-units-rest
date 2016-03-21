@@ -3,7 +3,7 @@
 # @Author: Ritesh Pradhan
 # @Date:   2016-03-21 11:28:25
 # @Last Modified by:   Ritesh Pradhan
-# @Last Modified time: 2016-03-21 12:33:58
+# @Last Modified time: 2016-03-21 12:43:49
 
 
 from flask import Flask, render_template, request, jsonify, redirect, url_for, Response
@@ -76,7 +76,7 @@ def rest_service_key():
 			if "cf" not in set(request.args) and "units" not in set(request.args):
 				return not_found()
 
-			arg_key = "cf" in "cf" in request.args else "units"
+			arg_key = "cf" if "cf" in request.args else "units"
 			arg_value = request.args.get(arg_key)
 			results = db[db_table_name].find({arg_key: arg_value})
 			json_results = []
